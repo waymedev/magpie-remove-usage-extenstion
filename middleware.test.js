@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { onEvent } from "./middleware.js";
 
-test("drops an empty choices chunk that contains usage", () => {
+test("drops an empty choices chunk", () => {
   const event = {
     choices: [],
     usage: {
@@ -33,7 +33,7 @@ test("keeps the finish chunk", () => {
   assert.equal(onEvent(event), undefined);
 });
 
-test("keeps an empty choices chunk without usage", () => {
-  assert.equal(onEvent({ choices: [], usage: null }), undefined);
-  assert.equal(onEvent({ choices: [] }), undefined);
+test("drops an empty choices chunk without usage", () => {
+  assert.equal(onEvent({ choices: [], usage: null }), null);
+  assert.equal(onEvent({ choices: [] }), null);
 });

@@ -1,21 +1,14 @@
 # magpie-remove-usage-extenstion
 
-Magpie gateway middleware that removes the OpenAI compatible streaming chunk where `choices` is empty and `usage` is present.
+Magpie gateway middleware that removes every OpenAI compatible streaming chunk where `choices` is an empty array.
 
 This handles responses like:
 
 ```json
-{
-  "choices": [],
-  "usage": {
-    "completion_tokens": 178,
-    "prompt_tokens": 3608,
-    "total_tokens": 3786
-  }
-}
+{"choices": [], "usage": {"completion_tokens": 178}}
 ```
 
-The middleware returns `null` for that event, which tells Magpie to omit it. All other streamed events, including `data: [DONE]`, pass through unchanged.
+The middleware returns `null` for every event whose `choices` field is an empty array, which tells Magpie to omit it. All other streamed events, including `data: [DONE]`, pass through unchanged.
 
 ## Install from GitHub
 
