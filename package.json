@@ -1,0 +1,24 @@
+{
+  "name": "magpie-remove-usage-extenstion",
+  "version": "1.0.0",
+  "description": "Magpie gateway middleware that drops OpenAI streaming usage chunks with an empty choices array.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waymedev/magpie-remove-usage-extenstion.git"
+  },
+  "keywords": [
+    "magpie",
+    "magpie-plugin",
+    "middleware",
+    "openai",
+    "streaming"
+  ],
+  "magpie": {
+    "middleware": "./middleware.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}
